@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+   
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="style.css">
+    <title>review form</title>
+  </head>
+  <body>
+     <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
+    <!--<div id="root"></div> -->
+    <div class="container">
+    <form onsubmit="submitEmail(); reset(); return false;">
+      <h1>Survey Form Submission</h1>
+      <div class="mb-5">
+          <label for="name_input" class="form-label">Name</label>
+          <input type="text" required minlength="2" maxlength="50" class="form-control" id="name_input" name="name" placeholder="Name">
+          <div class="invalid-feedback">Please provide your name</div>
+      </div>  
+
+<div>
+    <label for="gender">Gender:</label>
+    <select name="gender">
+      <option value="">Please select one…</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+      <option value="non-binary">Non-Binary</option>
+      <option value="other">Other</option>
+      <option value="Prefer not to answer">Perfer not to Answer</option>
+    </select>
+</div>
+
+<div>
+  <label for="nationality">Nationality:</label>
+  <select name="nationality">
+    <option value="">Please select one…</option>
+<option value="Albania">India</option>
+<option value="other">Other</option>
+</select>
+</div>
+
+      <div class="mb-5">
+          <label for="email_addr" class="form-label">Email address</label>
+          <input type="email" required minlength="2" maxlength="50" class="form-control" id="email_addr" name="email"
+              placeholder="name@example.com">
+          <div class="invalid-feedback">Please enter your email address</div>
+      </div>
+      
+      <div class="mb-5">
+          <label for="phone_input" class="form-label">Phone</label>
+          <input type="tel" required maxlength="50" class="form-control" id="phone_input" name="Phone"
+              placeholder="Phone">
+          <div class="invalid-feedback">Please Provide your phone number</div>
+      </div>
+
+
+      <div class="mb-5">
+          <label for="message" class="form-label">Message</label>
+          <textarea maxlength="2500" required class="form-control" id="message" name="message" rows="5"></textarea>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary px-4">Submit</button>
+  </form>
+
+</div>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function submitEmail(){
+         Email.send({
+    Host : "smtp.gmail.com",
+    Username : "smtp@gmail.com@gmail.com",
+    Password : "password",
+    To : 'smtp@gmail.com@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "new contact form ",
+    Body : "Name: " + document.getElementById("name").value
+    + "<br> Gender: " +document.getElementById("gender").value 
+    + "<br> Email: " +document.getElementById("email").value 
+    + "<br> Nationality: " +document.getElementById("nationality").value 
+    + "<br> Phone no: " +document.getElementById("phone").value 
+    + "<br> Message: " +document.getElementById("message").value 
+}).then(
+  message => alert(message send succesfully)
+);
+      }
+    </script>
+  </body>
+</html>
